@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Download, Sparkles, MapPin, GraduationCap, Briefcase, Code2 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ProtectedImage } from "@/components/presentation/ProtectedImage";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -188,12 +189,13 @@ export function About() {
               {/* Purple gradient border */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-500 via-fuchsia-500 to-purple-800 p-[2px] z-10 pointer-events-none" />
               <div className="absolute inset-[2px] rounded-3xl overflow-hidden z-10">
-                <Image
+                <ProtectedImage
                   src="/profile.jpeg"
                   alt="Yusra Ateeq"
                   fill
                   sizes="400px"
                   className="object-cover"
+                  watermarkText="© Yusra Ateeq"
                 />
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

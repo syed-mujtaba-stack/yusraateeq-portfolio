@@ -8,6 +8,7 @@ import { SiGithub, SiInstagram } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import { HeroBackground } from "@/components/backgrounds/HeroBackground";
 import { MagneticButton } from "@/components/effects/MagneticButton";
+import { ProtectedImage } from "@/components/presentation/ProtectedImage";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -45,7 +46,7 @@ export function Hero() {
     <section
       id="hero"
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050505]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050505] pt-16 md:pt-20"
     >
       <HeroBackground />
       <div className="absolute inset-0 bg-gradient-to-b from-purple-950/30 via-transparent to-black/80 z-[1]" />
@@ -73,6 +74,7 @@ export function Hero() {
         <div className="w-px h-16 bg-gradient-to-b from-purple-500/50 to-transparent mx-auto mt-2" />
       </motion.div>
 
+      {/* inner content — no extra padding needed, section handles navbar offset */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto">
         {/* Profile image with ring animation */}
         <motion.div
@@ -90,13 +92,14 @@ export function Hero() {
               <div className="w-full h-full rounded-full bg-black" />
             </motion.div>
             <div className="absolute inset-[3px] rounded-full overflow-hidden">
-              <Image
+              <ProtectedImage
                 src="/profile.jpeg"
                 alt="Yusra Ateeq"
                 fill
                 sizes="144px"
                 className="object-cover"
                 priority
+                watermark={false}
               />
             </div>
             <motion.div

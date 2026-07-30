@@ -128,6 +128,65 @@ body {
   text-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
 }
 
+/* ── Presentation Mode ───────────────────────────────────────────────────── */
+
+/* Applied to <html> when fullscreen is active */
+html.presentation-mode {
+  /* Slightly larger base font for easier reading on big screens */
+  font-size: 17px;
+}
+
+html.presentation-mode body {
+  /* Cinematic smooth scrolling */
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar in presentation mode for a cleaner look */
+html.presentation-mode * {
+  scrollbar-width: none;
+}
+html.presentation-mode *::-webkit-scrollbar {
+  display: none;
+}
+
+/* Breathe a little more space into sections */
+html.presentation-mode section {
+  padding-top: calc(var(--section-pt, 7rem) * 1.15);
+  padding-bottom: calc(var(--section-pb, 7rem) * 1.15);
+}
+
+/* Slightly increase heading scale */
+html.presentation-mode h1 { letter-spacing: -0.03em; }
+html.presentation-mode h2 { letter-spacing: -0.02em; }
+
+/* ── Content Protection — user-select & drag ─────────────────────────────── */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Allow selection inside inputs and textareas */
+input, textarea, [contenteditable] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}
+
+/* Prevent image dragging globally */
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+}
+
+/* Re-enable pointer events for interactive images that need them */
+img.interactive {
+  pointer-events: auto;
+}
+
 /* Force GPU compositing on fixed background canvases */
 canvas.fixed {
   will-change: transform;
